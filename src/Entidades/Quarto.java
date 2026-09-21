@@ -14,10 +14,6 @@ public class Quarto {
 		this.nome = nome;
 		this.email = email;
 	}
-	
-	public Quarto(int andar2, int numero2, String nome2, String email2) {
-		
-	}
 
 	public Integer getAndar() {
 		return andar;
@@ -53,8 +49,9 @@ public class Quarto {
 	
 	@Override
 	public String toString() {
-		return "Quarto & Andares [numero = " + numero + ", andar = " + andar + ", nome=" + nome + ", email=" + email + "]";
+		return "Quarto & Andares [numero = " + this.numero + ", andar = " + this.andar + ", nome=" + this.nome + ", email=" + this.email + "]";
 	}
+	
 	
 	
 }
