@@ -52,6 +52,4 @@ public class Quarto {
 		return "Quarto & Andares [numero = " + this.numero + ", andar = " + this.andar + ", nome=" + this.nome + ", email=" + this.email + "]";
 	}
 	
-	
-	
 }
