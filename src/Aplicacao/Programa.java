@@ -1,41 +1,53 @@
 package Aplicacao;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-import Entidades.Quarto;
+import Entidades.Funcionarios;
 
 public class Programa {
 
 	public static void main(String[] args) {
-		java.util.Scanner sc = new Scanner(System.in);
-		Quarto[][] pensionato = new Quarto[3][10];
-		int qnt, numero, andar;
-		String nome, email;
-		System.out.println("Quantos quartos serao alugados?");
-		qnt = sc.nextInt();
-		for (int i = 1; i <= qnt; i++) {
-			System.out.println("##Aluguel##");
-			System.out.println("Nome: ");
+		Scanner sc = new Scanner(System.in);
+		List<Funcionarios> lista = new ArrayList<>();
+		String nome;
+		int qtd, id;
+		double salario;
+		float percentual;
+		System.out.println("Quantos empregados serão cadastrados? ");
+		qtd = sc.nextInt();
+		for (int i = 1; i <= qtd; i++) {
+			System.out.println("--------------------------");
+			System.out.print("Informe o id: ");
+			id = sc.nextInt();
+			System.out.print("Informe o nome: ");
 			sc.nextLine();
 			nome = sc.nextLine();
-			System.out.println("Andar");
-			andar = sc.nextInt();
-			System.out.println("Email: ");
-			email = sc.next();
-			System.out.println("Quarto: ");
-			numero = sc.nextInt();
-			Quarto quarto = new Quarto(andar, numero, nome, email);
-			pensionato[andar - 1][numero - 1] = quarto;
+			System.out.println("Informe o salario: ");
+			salario = sc.nextDouble();
+			System.out.println("--------------------------");
+			Funcionarios func = new Funcionarios(nome, id, salario);
+			lista.add(func);
 		}
 		System.out.println();
-		System.out.println("Quartos ocupados:");
-		for (int i = 0; i < pensionato.length; i++) {
-			for (int j = 0; j < pensionato[0].length; j++) {
-				if (pensionato[i][j] != null) {
-					System.out.println(pensionato[i][j]);
-				}
+		System.out.println("Informe o Id do funcionário que terá seu salário modificado:");
+		id = sc.nextInt();
+		Funcionarios funcReajus = null;
+		for (Funcionarios obj : lista) {
+			if (obj.getId() == id) {
+				funcReajus = obj;
 			}
 		}
+		if (funcReajus != null) {
+			System.out.println("Informe o percentual: ");
+			percentual = sc.nextFloat();
+			funcReajus.ajusteSalario(percentual);
+		}
+		System.out.println();
+		System.out.println("Lista de Empregados: ");
+		for (Funcionarios obj : lista) {
+			System.out.println(obj);
+		}
 	}
-
 }
